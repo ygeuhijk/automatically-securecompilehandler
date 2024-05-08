@@ -1,15 +1,9 @@
-function productExceptSelf(nums) {
-  const n = nums.length;
-  const result = new Array(n).fill(1);
-  let product = 1;
-  for (let i = 0; i < n; i++) {
-    result[i] *= product;
-    product *= nums[i];
+function maxProfit(prices) {
+  let minPrice = Infinity;
+  let maxProfit = 0;
+  for (const price of prices) {
+    minPrice = Math.min(minPrice, price);
+    maxProfit = Math.max(maxProfit, price - minPrice);
   }
-  product = 1;
-  for (let i = n - 1; i >= 0; i--) {
-    result[i] *= product;
-    product *= nums[i];
-  }
-  return result;
+  return maxProfit;
 }
